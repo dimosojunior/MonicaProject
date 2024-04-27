@@ -1,0 +1,154 @@
+{% extends 'App/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>School System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+  <style type="text/css">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    input{
+      border-radius: 8px;
+      margin-bottom: 50px;
+      border: 1px solid green;
+      padding: 10px;
+      width: 100%;
+    }
+    .input-label{
+      color: red;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="hero-wrap js-fullheight" style="height: 100vh">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
+      <div class="col-md-7 ftco-animate">
+        <span class="subheading">Welcome to Our System</span>
+        <h1 class="mb-4" style="font-size: 22px;">Students Payments System</h1>
+        <!-- <p class="caps">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p> -->
+        <p class="mb-0"><a href="{% url 'AllClasses' %}" class="btn btn-primary">Get Started</a> <!-- <a href="#" class="btn btn-white">Learn More</a> -->
+        </p>
+    </div>
+</div>
+</div>
+</div>
+
+
+{% if not user.is_authenticated %}
+
+<section class="ftco-section ftco-no-pb ftco-no-pt">
+   <div class="container" >
+      <div class="row">
+         <div class="col-md-7"></div>
+         <div class="col-md-5 order-md-last">
+          <div class="login-wrap p-4 p-md-5" style="background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));">
+
+                      {% if messages %}
+    {% for message in messages %}
+     
+
+          <div class="alert alert-warning alert-dismissible fade show" role="alert" style="background-color: white;">
+  <strong style="font-size: 16px;color: red;">{{message}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="color: red;"></button>
+</div>
+    {% endfor %}
+  {% endif %}
+              <h3 class="mb-4">Login Now</h3>
+              <form method="POST" action="" class="signup-form">
+                {% csrf_token %}
+                 
+                <div class="form-group">
+                   
+                    <input type="text" name="username" class="" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                
+                 <input id="password-field" name="password" type="password" class="" placeholder="Enter password" required>
+             </div>
+            
+             <div class="form-group d-flex  mt-4" style="margin: 15px;">
+                 <button type="submit" class="btn btn-success submit" style="margin-right: 15px;">Login <span class="fa fa-paper-plane" ></span></button>
+
+                 <button type="reset" class="btn btn-danger submit">Reset <span class="fa fa-paper-plane"></span></button>
+             </div>
+         </form>
+         
+     </div>
+ </div>
+</div>
+</div>
+</section>
+
+
+
+
+{% else %}
+
+
+
+<section class="ftco-section ftco-no-pb ftco-no-pt">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-7"></div>
+         <div class="col-md-5 order-md-last">
+          <div class="login-wrap p-4 p-md-5" style="background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));">
+              <h3 class="mb-2">About Us</h3>
+              <form action="#" class="signup-form">
+
+
+                     <p style="color: white;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+               
+         </form>
+
+          <div class="form-group d-flex justify-content-end mt-4">
+
+            <a href="{% url 'logout' %}">
+                 <button type="submit" class="btn btn-success submit">Logout <span class="fa fa-paper-plane"></span></button>
+                 </a>
+             </div>
+      
+     </div>
+ </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+{% endif %}
+
+</body>
+</html>
+
+
+{% endblock %}

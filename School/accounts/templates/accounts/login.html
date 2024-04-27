@@ -1,0 +1,542 @@
+{% extends 'App/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>School System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+  <style type="text/css">
+    
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+#hero {
+  width: 100%;
+  height: 100vh;
+  /*background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("{% static 'App/assets/images/bc.jpeg' %}") ;*/
+  background-size: cover;
+  position: relative;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#hero .container {
+  padding-top: 72px;
+
+}
+
+@media (max-width: 992px) {
+  #hero .container {
+    
+      }
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+  /*font-family: "Poppins", sans-serif;*/
+}
+
+#hero h2 {
+  color: #eee;
+  margin: 10px 0 0 0;
+  font-size: 24px;
+}
+
+#hero .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 35px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin-top: 30px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+#hero .btn-get-started:hover {
+  background: #5fcf80;
+  border: 1px solid #5fcf80;
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    height: 400px;
+  }
+
+  #hero h1 {
+    font-size: 22px;
+    line-height: 36px;
+  }
+
+  #hero h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f6f7f6;
+}
+
+.section-title {
+  padding-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0 0 5px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  /*font-family: "Poppins", sans-serif;*/
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: #9ae1af;
+  margin: 4px 10px;
+}
+
+.section-title p {
+  margin: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  /*font-family: "Poppins", sans-serif;*/
+  color: #37423b;
+}
+
+.breadcrumbs {
+  margin-top: 73px;
+  text-align: center;
+  /*background: #5fcf80;*/
+  background-color: rgb(5,5,49);
+  padding: 30px 0;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs {
+    margin-top: 63px;
+  }
+}
+
+.breadcrumbs h2 {
+  font-size: 18;
+  font-weight: 500;
+}
+
+.breadcrumbs p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+
+
+
+
+
+/*STYLES FOR LOGIN PAGE*/
+
+
+.login{
+  /*position: absolute;*/
+  top: 0%;
+  left: 0%;
+  /*width: 400px;*/
+  padding: 40px;
+ /* transform: translate(-50%, -50%);*/
+     background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url("{% static 'App/assets/images/1q.jpeg' %}");
+
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-bottom: 1.50px solid #03e9f4;
+  border-radius: 10px;
+
+}
+.login h2{
+  margin: 0 0 30px;
+  padding: 0;
+  color: #03e9f4;
+  text-align: center;
+}
+
+
+.login .user-box{
+  position: relative;
+}
+.login .user-box input{
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #03e9f4;
+  outline: none;
+  background: transparent;
+}
+.login .user-box label{
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  color: #03e9f4;
+  pointer-events: none;
+  font-size: 16px;
+  transition: 0.5s;
+}
+.login .user-box input:focus ~ label,
+.login .user-box input:valid ~ label{
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+.login p{
+  color: darkgray;
+  cursor: pointer;
+}
+.login p span{
+  color: #03e9f4;
+  float: right;
+}
+.login form .link-btn{
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+}
+.login .link-btn:hover{
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+input[type="submit"]{
+
+    position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+
+
+
+}
+/*input[type="submit"]{
+    background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+
+    }*/
+.login .link-btn span{
+  position: absolute;
+  display: block;
+}
+.login .link-btn span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animatedbtn1 1s linear infinite;
+}
+@keyframes animatedbtn1{
+  0%{
+    left: -100%;
+  }
+  50%,100%{
+    left: 100%;
+  }
+}
+.login .link-btn span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animatedbtn2 1s linear infinite;
+  animation-delay: .25s;
+}
+@keyframes animatedbtn2{
+  0%{
+    top: -100%;
+  }
+  50%,100%{
+    top: 100%;
+  }
+}
+
+.login .link-btn span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animatedbtn3 1s linear infinite;
+  animation-delay: .5s;
+}
+@keyframes animatedbtn3{
+  0%{
+    right: -100%;
+  }
+  50%,100%{
+    right: 100%;
+  }
+}
+
+.login .link-btn span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: animatedbtn4 1s linear infinite;
+  animation-delay: .75s;
+}
+@keyframes animatedbtn4{
+  0%{
+    bottom: -100%;
+  }
+  50%,100%{
+    bottom: 100%;
+  }
+}
+@media screen and (max-width:430px){
+  .login{
+    width: 90%;
+  }
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+
+
+<div class="container-fluid" style="margin-top: 0px;">
+  
+
+
+
+
+
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1><span style="color: red;">SPS,</span> <br>Students Payment System</h1>
+      <h2> <span style="color: wheat;font-size: 16px;font-weight: bold;"> Better Education </span> </h2>
+
+
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <h3 style="color: red;font-size: 14px;font-weight: bold;">{{message}}</h3><br>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
+     
+
+
+
+
+ {% if not user.is_authenticated %}
+       <button class="get-started-btn" data-bs-toggle="modal" data-bs-target="#login" style="margin-top: 15px;">Login here </button> 
+       {% else %}
+       
+       <a href="{% url 'AllClasses' %}">
+        <button class=" btn btn-success get-started-btn" style="margin-top: 15px;"> Get Started </button></a>
+
+       {% endif %}
+      
+    </div>
+  </section><!-- End Hero -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal  for SIGNUP BUTTON -->
+
+
+<div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"> STEDENTS PAYMENT STSTEM </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="font-size: 22px;">
+
+        
+         <div class="login">
+    <h2 style="font-size: 18px;font-family: sans-serif;">Signin here</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+     
+
+      <div class="user-box">
+        <input type="text" name="username" required>
+        <label>UserName</label>
+      </div>
+
+      <div class="user-box">
+        <input type="password" name="password" required>
+        <label>Password</label>
+      </div>
+
+      
+
+     <!--  <p><input type="checkbox">Remember me <span>Forgot?</span></p> -->
+
+        <a href="" class="link-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+
+
+        <button type="submit"  style="background-color: green;color: white;padding: 10px;padding-right: 20px;padding-left: 20px;font-size: 20px;border-radius: 10px;">Signin</button>
+      </a>
+
+     <!--  <div class="options-02">
+                    <p>You don't have an account? <a href="" style="font-size: 18px;color: lightblue;font-weight: bold;text-decoration: none;">Sign Up</a></p>
+                </div> -->
+    </form>
+  </div>
+
+</div> 
+<!-- mwisho wa modal-body -->
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="font-size: 18px;">Close</button>
+
+
+
+
+             </div>
+    </div>
+  </div>
+</div>
+<!--MWISHO WA  Modal  for SIGNUP BUTTON -->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+{% endblock %}

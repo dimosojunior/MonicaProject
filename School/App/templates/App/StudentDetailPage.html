@@ -1,0 +1,215 @@
+{% extends 'App/base2.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>View Student</title>
+    <style type="text/css">
+      
+        body{
+            /*display: flex;*/
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /*background: #333;*/
+        }
+        .container{
+           
+            
+            /*padding: 80px 40px;*/
+            justify-content: center;
+            align-items: center;
+           
+            margin-top: 0px;
+            
+        }
+
+     .display-text{
+        
+        background-color: #333;
+        /*margin-right: 150px;
+        margin-left: 150px;*/
+        border-width: 2px;
+        border-color: white;
+        border: 1px solid white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+       /* margin: 10px;*/
+        
+     }
+     .display-text-2{
+        margin-left: 20px;
+        margin-top: 10px;
+
+     }
+
+     .fees-informations{
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 30px;
+     }
+
+
+    </style>
+</head>
+<body>
+
+
+
+
+ <div class="container">
+
+
+
+
+<center>
+    <h1 style="color: white;font-family: sans-serif;font-size: 25px;text-align: center;margin-top:20px;font-weight: bold;margin-bottom: 50px;">{{queryset.StudentName}} </h1>
+</center>
+
+ 
+
+ <div class="container">
+    {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <h3 style="color: red;font-size: 14px;font-weight: bold;">{{message}}</h3><br>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
+     
+ 
+    <!-- mwanzo wa row -->
+     <div class="row student-informations-container" style="width: 100%;">
+
+        {% if queryset %}
+        
+        <div class="col-md-5 display-text">
+            
+       {% if queryset.StudentImage %}
+         <img src="{{queryset.StudentImage.url}}" class="large-img" style="border-radius: 300px;width: 70px;height: 70px;margin-bottom: 15px;">
+
+         {% else %}
+
+          <img src="{% static 'App/assets/images/icon2.png' %}" class="large-img" style="border-radius: 300px;width: 70px;height: 70px;margin-bottom: 15px;">
+
+          {% endif %}
+
+         <h3 style="color: red;font-weight: bold;font-size: 16px;">Student Name : <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">{{queryset.StudentName}}</span></h3>
+
+         <h3 style="color: red;font-weight: bold;font-size: 16px;">Parent Phone Number: <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">{{queryset.ParentNumber}}</span></h3>
+
+          <h3 style="color: red;font-weight: bold;font-size: 16px;">Student Location: <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">{{queryset.StudentLocation}}</span></h3>
+
+            <h3 style="color: red;font-weight: bold;font-size: 16px;">Student Gender: <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">{{queryset.Gender}}</span></h3>
+       {% if queryset.is_finished == False %}   
+      <a href="{% url 'ReceiveStudentFee' queryset.id %}">
+       <button style="border-radius: 10px;padding: 10px;background: green;color: white;font-size: 16px;margin-top: 15px;margin-right: 20px;">Receive Amount</button> </a>
+       {% else %}
+        
+       <button style="border-radius: 10px;padding: 10px;background: blue;color: white;font-size: 16px;margin-top: 15px;margin-right: 20px;">Successfully Paid</button> 
+       {% endif %}
+
+
+       
+
+  
+
+  
+   </div>
+
+
+
+    <div class="col-md-5 display-text-2">
+
+        <h3 class="fees-informations">Fees Informations</h3>
+
+    <h3 style="color: red;font-weight: bold;font-size: 16px;">Total Fee Amount : <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">Tsh.{{queryset.Class.ClassFee}}/=</span></h3>
+
+ {% if queryset.StatusFee > 0 %}
+<h3 style="color: red;font-weight: bold;font-size: 16px;">Amount Paid : <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">Tsh.{{queryset.StatusFee}}/=</span></h3>
+{% else %}
+<h3 style="color: red;font-weight: bold;font-size: 16px;">Amount Paid : <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">0</span></h3>
+{% endif %}
+
+
+<h3 style="color: red;font-weight: bold;font-size: 16px;"> Status Fee: <span style="color: white;font-weight: bold;font-size: 16px;margin-left: 20px;">{% if queryset.StatusFee == queryset.Class.ClassFee %} Finish {% else %} Not Finish  {% endif %}</span></h3>
+
+
+
+     {% if queryset.Class.ClassFee > queryset.StatusFee and queryset.AmountRemained == 0 %}
+       <button class="ada-batani" style="border-radius: 10px;padding: 20px;color: white;font-size: 16px;margin-top: 15px;margin-right: 20px;width: 100%;">Anadaiwa: Tsh.{{queryset.Class.ClassFee}}/=</button> {% endif %}
+
+
+        {% if queryset.Class.ClassFee > queryset.StatusFee and queryset.AmountRemained > 0 %}
+       <button class="ada-batani" style="border-radius: 10px;padding: 20px;color: white;font-size: 16px;margin-top: 15px;margin-right: 20px;width: 100%;">Anadaiwa: Tsh.{{queryset.AmountRemained}}/=</button> {% endif %}
+
+
+       {% if queryset.Class.ClassFee == queryset.StatusFee %}
+       <button class="ada-batani" style="border-radius: 10px;padding: 20px;color: white;font-size: 16px;margin-top: 15px;margin-right: 20px;width: 100%;">Hadaiwi</button> {% endif %}
+
+       {% if queryset.Class.ClassFee < queryset.StatusFee %}
+       <button class="ada-batani" style="border-radius: 10px;padding: 20px;color: white;font-size: 16px;margin-top: 15px;margin-right: 20px;width: 100%;">Anadai Tsh.{{queryset.AmountExceed}}/=</button> {% endif %}
+
+
+
+
+        </div>
+
+   
+
+   {% else %}
+   <center>
+       <h1 style="font-size: 16px;color: white;font-weight: bold;">There is no any data for {{queryset.StudentName}}</h1>
+   </center>
+
+   {% endif %}
+         
+     </div>
+     <!-- mwisho wa row -->
+     </div>
+ 
+
+
+
+
+</div>
+
+<script>
+    // JavaScript for hiding and showing containers
+    document.addEventListener('DOMContentLoaded', function () {
+        // Hide 'after-clicked-container' initially
+        document.getElementById('after-clicked-container').style.display = 'none';
+
+        // Add click event listener to 'start-button'
+        document.getElementById('start-button').addEventListener('click', function () {
+            // Hide 'form-container'
+            document.getElementById('form-container').style.display = 'none';
+            // Show 'after-clicked-container'
+            document.getElementById('after-clicked-container').style.display = 'block';
+        });
+
+        // Add click event listener to 'cancel-button'
+        document.getElementById('cancel-button').addEventListener('click', function () {
+            // Hide 'after-clicked-container'
+            document.getElementById('after-clicked-container').style.display = 'none';
+            // Show 'form-container'
+            document.getElementById('form-container').style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,829 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title></title>
+
+     <!--HII NI KWA AJILI YA ICONS ZOTE--->
+ <link href="{% static 'App/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+
+
+         <!---jqeury css link---->
+     <link rel="stylesheet" href="{% static 'App/assets/jqueryui/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'App/assets/jqueryui/jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" href="{% static 'App/assets/jqueryui/jquery-ui.structure.css' %}">
+    <link rel="stylesheet" href="{% static 'App/assets/jqueryui/jquery-ui.theme.min.css' %}">
+     <link rel="stylesheet" href="{% static 'App/assets/jqueryui/jquery-ui.theme.css' %}">
+
+ <!-- Vendor CSS Files ----->
+    <link href="{% static 'App/assets/css/animate.min.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'App/assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'App/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  
+    <link href="{% static 'App/assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+ 
+
+   
+
+
+
+
+    <style type="text/css">
+
+
+
+
+
+
+
+
+
+body{
+    background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url("{% static 'App/assets/images/1q.jpeg' %}");
+
+}
+a{
+    color: white;
+}
+
+.page-title {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 0; }
+
+
+
+
+ 
+
+
+.registration-form{
+  background-color: ;
+
+}
+.span-price-information{
+  font-size: 14px;
+}
+
+      
+input{
+  padding: 10px;
+  border-radius:6px;
+  border:1px solid green;
+  width:90%;
+  color: black;
+  margin-bottom: 30px;
+
+}
+.datepicker{
+   padding: 10px;
+  border-radius:10px;
+  border:1px solid white;
+  width:90%;
+  color: white;
+}
+select{
+  width: 90%;
+  padding: 10px;
+  border-radius: 7px;
+  border:1px solid white;
+
+}
+ textarea{
+
+  padding: 10px;
+  border-radius:10px;
+  border:1px solid white;
+  width:90%;
+  height: 150px;
+
+ }
+
+
+input::placeholder{
+  color: white;
+  font-size: 16px;
+
+}
+.form-card-title{
+  font-size: 16px;
+  color: yellow;
+}
+.reg-form-label{
+  text-align: center;
+}
+
+.error-message-container{
+  margin-bottom: 15px;
+
+}
+.error-message{
+  font-size: 14px;
+  color: red;
+},
+.pagination-container{
+  background-color: white;
+  font-size: 16px;
+}
+
+.pagination-header{
+  font-size: 16px;
+  font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pagination-link{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px;
+  background-color: blue;
+  padding: 6px;
+
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+
+
+}
+.pagination-link:hover{
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+
+.table-responsive{
+  
+  overflow: scroll;
+
+}
+
+
+.home-page-header-title{
+  font-weight: bold;
+  color:yellow;
+}
+.home-page-left-title{
+  font-size: 14px;
+
+}
+.home-page-right-title{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/*table{
+  box-shadow: -10px 10px  10px rgba(0,0,0,0.3);
+  overflow: scroll;
+}
+*/
+.card-title{
+  color:white;
+}
+
+
+ 
+.table-container{
+  margin-top: 100px;
+}
+
+.table-header-title{
+  font-size: 18px;
+  text-align: center;
+  color: white;
+
+}
+
+.form-label{
+  font-size: 16px;
+  
+  color: white;
+
+}
+
+table,tr,td{
+  color: white;
+}
+
+
+.not-found-message{
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*MY HEADER*/
+
+
+
+
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #5fcf80;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #7ed899;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: rgb(5,5,49);
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #5fcf80;
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  background-color: rgb(5,5,49);
+
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 15px 0;
+  box-shadow: 0px 0 18px rgba(55, 66, 59, 0.08);
+}
+
+#header .logo {
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  /*font-family: "Poppins", sans-serif;*/
+}
+
+#header .logo a {
+  color: white;
+}
+
+#header .logo img {
+  max-height: 40px;
+}
+
+/**
+* Get Startet Button 
+*/
+.get-started-btn {
+  margin-left: 22px;
+  background: blue;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.get-started-btn:hover {
+  background: #3ac162;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .get-started-btn {
+    margin: 0 15px 0 0;
+    padding: 6px 18px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
+.navbar {
+  padding: 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  /*font-family: "Poppins", sans-serif;*/
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+  color: wheat;
+}
+
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 30px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgb(5,5,49);
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  font-size: 14px;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover>a {
+  color: #5fcf80;
+}
+
+.navbar .dropdown:hover>ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+
+.navbar .dropdown .dropdown:hover>ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+/**
+* Mobile Navigation 
+*/
+.mobile-nav-toggle {
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  transition: 0.5s;
+}
+
+.mobile-nav-toggle.bi-x {
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    display: none;
+  }
+}
+
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /*background: rgba(32, 38, 34, 0.9);*/
+  background-color: green;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.navbar-mobile .mobile-nav-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  padding: 10px 0;
+  border-radius: 6px;
+ /* background-color: #fff;*/
+ background-color: rgb(5,5,49);
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: white;
+}
+
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover>a {
+  color: #5fcf80;
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+  margin: 15px;
+}
+
+.navbar-mobile .dropdown ul {
+  position: static;
+  display: none;
+  margin: 10px 20px;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background-color: rgb(5,5,49);
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+}
+
+.navbar-mobile .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar-mobile .dropdown ul a {
+  padding: 10px 20px;
+}
+
+.navbar-mobile .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar-mobile .dropdown ul a:hover,
+.navbar-mobile .dropdown ul .active:hover,
+.navbar-mobile .dropdown ul li:hover>a {
+  color: white;
+}
+
+.navbar-mobile .dropdown>.dropdown-active {
+  display: block;
+}
+
+
+
+
+
+
+
+
+/*MWISHO WA MY HEADER*/
+
+.table-header-title{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.button-form-column{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.add-reg-form{
+  box-shadow: -10px 10px  10px rgba(0,0,0,0.5);
+  padding: 20px;
+}
+
+.student-informations-container{
+  box-shadow: -10px 10px  10px rgba(0,0,0,0.5);
+  padding: 20px;
+}
+.ada-batani{
+  border-top-right-radius: 0px;
+  border-radius: 10px;
+  background-color: black;
+}
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">USMA</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="active" href="{% url 'login' %}">Home</a></li>
+          
+         
+          
+         
+           
+       
+
+          <li class="dropdown"><a href="#"><span>Students</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                   <li><a href="{% url 'AllClasses' %}">All Students</a></li>
+                  <li><a href="{% url 'AllPaidStudents' %}">Paid Students</a></li>
+
+                     <li><a href="{% url 'AllUnPaidStudents' %}">UnPaid Students</a></li>
+                  
+                  
+                </ul>
+              </li>
+
+
+
+           
+
+
+
+
+
+         
+          
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#" class="get-started-btn">{{user.username}}</a>
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+
+
+
+<!--this is for responsive navbar--->
+ <script type="text/javascript">
+
+
+
+(() =>{
+
+  const openNavMenu = document.querySelector(".open-nav-menu"),
+  closeNavMenu = document.querySelector(".close-nav-menu"),
+  navMenu = document.querySelector(".nav-menu"),
+  menuOverlay = document.querySelector(".menu-overlay"),
+  mediaSize = 991;
+
+  openNavMenu.addEventListener("click", toggleNav);
+  closeNavMenu.addEventListener("click", toggleNav);
+  // close the navMenu by clicking outside
+  menuOverlay.addEventListener("click", toggleNav);
+
+  function toggleNav() {
+    navMenu.classList.toggle("open");
+    menuOverlay.classList.toggle("active");
+    document.body.classList.toggle("hidden-scrolling");
+  }
+
+  navMenu.addEventListener("click", (event) =>{
+      if(event.target.hasAttribute("data-toggle") &&
+        window.innerWidth <= mediaSize){
+        // prevent default anchor click behavior
+        event.preventDefault();
+        const menuItemHasChildren = event.target.parentElement;
+        // if menuItemHasChildren is already expanded, collapse it
+        if(menuItemHasChildren.classList.contains("active")){
+            collapseSubMenu();
+        }
+        else{
+          // collapse existing expanded menuItemHasChildren
+          if(navMenu.querySelector(".menu-item-has-children.active")){
+            collapseSubMenu();
+          }
+          // expand new menuItemHasChildren
+          menuItemHasChildren.classList.add("active");
+          const subMenu = menuItemHasChildren.querySelector(".sub-menu");
+          subMenu.style.maxHeight = subMenu.scrollHeight + "px";
+        }
+      }
+  });
+  function collapseSubMenu(){
+    navMenu.querySelector(".menu-item-has-children.active .sub-menu")
+    .removeAttribute("style");
+    navMenu.querySelector(".menu-item-has-children.active")
+    .classList.remove("active");
+  }
+  function resizeFix(){
+     // if navMenu is open ,close it
+     if(navMenu.classList.contains("open")){
+        toggleNav();
+     }
+     // if menuItemHasChildren is expanded , collapse it
+     if(navMenu.querySelector(".menu-item-has-children.active")){
+            collapseSubMenu();
+     }
+  }
+
+  window.addEventListener("resize", function(){
+     if(this.innerWidth > mediaSize){
+        resizeFix();
+     }
+  });
+
+})();
+
+
+ </script>
+
+
+<!-- loader -->
+<!-- <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+ -->
+
+
+
+
+
+   
+
+   
+
+<!--jquery code for autocomplete javascriptcode---->
+<script src="{% static 'App/assets/jqueryui/external/jquery/jquery.js' %}" type="text/javascript"></script>
+<script src="{% static 'App/assets/jqueryui/jquery-ui.js' %}" type="text/javascript"></script>
+
+
+
+<script src="{% static 'App/assets/js/bootstrap.min.js' %}"></script>
+
+ 
+
+
+   
+
+    <!-- ------------ AOS js Library  ------------------------- -->
+    <script src="{% static 'App/assets/js/aos.js' %}"></script>
+
+</body>
+</html>
